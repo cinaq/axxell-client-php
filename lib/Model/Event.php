@@ -259,7 +259,7 @@ class Event implements ArrayAccess
     public function setEventType($event_type)
     {
         $allowed_values = array('view', 'purchase', 'recommend');
-        if (!in_array($event_type, $allowed_values)) {
+        if (!is_null($event_type) && (!in_array($event_type, $allowed_values))) {
             throw new \InvalidArgumentException("Invalid value for 'event_type', must be one of 'view', 'purchase', 'recommend'");
         }
         $this->container['event_type'] = $event_type;
